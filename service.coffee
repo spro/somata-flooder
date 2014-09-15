@@ -1,6 +1,13 @@
-somata = require 'somata'
+somata = require 'somata/src'
+util = require 'util'
+log = somata.helpers.log
 
-echo = (v, cb) -> cb null, 'ok ' + v
+i = 0
+echo = (v, cb) ->
+    log.d ++i
+    if i%1000==0
+        log.i util.inspect s.rpc_binding.socket
+    cb null, 'ok ' + v
 
 s = new somata.Service 'flooder', {
     echo
